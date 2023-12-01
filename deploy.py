@@ -1,14 +1,16 @@
 from flask import Flask, render_template, request
 import pickle
+import joblib
+
 
 app = Flask(__name__,template_folder="templates")
 #load the model
-model =pickle.load(open('saved_model.sav', 'rb'))
+model =joblib.load(open('saved_model.sav', 'rb'))
 
 @app.route('/')
 def home():
     result = ''
-    return render_template('index.html')
+    return render_template('index.html',**locals())
 
 @app.route('/predict', methods=['POST','GET'])
 def predict():
@@ -18,7 +20,7 @@ def predict():
     petal_width=float(request.form['petal_width'])
     result = model.predict([[sepal_length,sepal_width,petal_length,petal_width]])
     #returning html page
-    return render_template('index.html')
+    return render_template('index.html',**locals())
 
 
 if __name__ == '__main__':
