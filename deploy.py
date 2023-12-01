@@ -5,7 +5,7 @@ import joblib
 
 app = Flask(__name__,template_folder="templates")
 #load the model
-model =joblib.load(open('saved_model.sav', 'rb'))
+model =joblib.load(open('save_model.sav', 'rb'))
 
 @app.route('/')
 def home():
