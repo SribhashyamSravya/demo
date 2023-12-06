@@ -1,5 +1,4 @@
-# demo
-IRIS CLASSIFICATION
+# IRIS CLASSIFICATION
 
 Website for This project
 
